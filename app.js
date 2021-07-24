@@ -17,13 +17,15 @@ app.use("/ipdata", ipDataRoutes);
 app.get("/", (req, res, next) => {
 	return res.send("<h1>This is ip tracker backend</h1>");
 });
+
+const port = process.env.PORT || 3050;
 mongoose
 	.connect(process.env.MONGOOSE_URI, {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 	})
 	.then((e) => {
-		app.listen(3050);
+		app.listen(port);
 	})
 	.catch((err) => {
 		console.log(err);
